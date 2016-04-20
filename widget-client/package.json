@@ -1,0 +1,22 @@
+{
+  "name": "widget-client",
+  "version": "0.0.1",
+  "description": "A widget client application.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NPS",
+    "Survey",
+    "Engine"
+  ],
+  "author": "Zahidul Islam",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.12"
+  }
+}

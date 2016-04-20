@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Widget Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="import" href="/static/elements.html">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    
+    <style is="custom-style">
+      .flex-center-justified {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+        margin: 75px 0 0;
+      }
+      .flex {
+        @apply(--layout-horizontal);
+      }
+    </style>
+  </head>
+  <body class="fullbleed layout vertical">
+      
+    <h1 align="center">NPS Dashboard</h1>
+    
+    <div class="container flex-center-justified">
+      <div class="container flex">
+        <x-kpi id="kpi" header="Total Number of responses" icon="question-answer"></x-kpi>
+  
+        <x-kpi header="Total Number of Dashboards" icon="dashboard" value=45></x-kpi>
+  
+        <x-kpi header="Total Number of Hierarchy" icon="favorite  " value=31></x-kpi>
+  
+      </div>
+    </div>
+    <div class="container flex-center-justified" style="margin: 20px 0;">
+        <x-nps id="1" data-source="http://localhost:3000/api/widgets/"></x-nps>
+    </div>
+    <script>
+      $(function(){
+        var kpi = document.querySelector("#kpi");
+        $.getJSON("http://localhost:3000/api/nps", function(data){
+            kpi.value = data.nps;
+            console.log(data);  
+        });
+      });
+    </script>
+  </body>
+</html>

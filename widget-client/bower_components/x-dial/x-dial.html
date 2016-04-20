@@ -1,0 +1,96 @@
+<link rel="import" href="../polymer/polymer.html">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <x-dial></x-dial>
+
+@demo
+-->
+<dom-module id="x-dial">
+  <link rel="import" type="css" href="x-dial.css">
+  <template>
+     <div id="gauge"></div>
+  </template>
+
+</dom-module>
+
+<script>
+  
+
+  Polymer({
+
+    is: 'x-dial',
+
+    properties: {
+      label: {
+         type: String,
+         value: "Label"
+      },
+      value: {
+        type: Number,
+        value: 100
+      },
+      height: {
+        type: Number,
+        value: 120
+      },
+      width: {
+        type: Number,
+        value: 400
+      },
+      greenFrom: Number,
+      greenTo: Number,
+      yellowFrom: Number,
+      yellowTo: Number,
+      redFrom: Number,
+      redTo: Number,
+      min: Number,
+      max: Number,
+      minTricks: {
+        type: Number,
+        value: 5
+      }
+
+    },
+    ready: function() {
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      var gaugeElm = this.$.gauge;
+      var label = this.label;
+      var value = this.value;
+      
+      var options = new Object();
+      options.width = this.width;
+      options.height = this.height;
+      options.greenFrom = this.greenFrom;
+      options.greenTo = this.greenTo;
+      options.minTricks = this.minTricks;
+      options.min = this.min;
+      options.max = this.max;
+      options.yellowFrom = this.yellowFrom;
+      options.yellowTo = this.yellowTo;
+      options.redFrom = this.redFrom;
+      options.redTo = this.redTo;
+
+
+      console.log(options);
+
+      function drawChart(){
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', label);
+        data.addRows(1);
+
+        data.setCell(0, 0, value);
+
+        var chart = new google.visualization.Gauge(gaugeElm);
+
+        chart.draw(data, options);
+      }
+    }
+  });
+
+</script>

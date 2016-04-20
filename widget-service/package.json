@@ -1,0 +1,16 @@
+{
+  "name": "widget-service",
+  "version": "1.0.0",
+  "description": "This Microservice provide configuration information of widgets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zahidul Islam",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "request": "^2.72.0"
+  }
+}
